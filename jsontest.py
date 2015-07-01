@@ -7,22 +7,33 @@ with open('/Users/ken/Desktop/jsontest/_User.json') as data_file:
 male = 0.0
 female = 0.0
 gay = 0.0
+
+for gender in data["results"]:
+	try:
+		if gender["gender"] == 'male':
+			male = male+1
+		elif gender["gender"] == 'female':
+			female = female+1
+	except:
+		gay = gay+1
+print("male number",male,"persent:",male/(male+female)*100)
+print("female number",female,"persent:",female/(male+female)*100)
+
+active = 0;
 pat='2015-06'
 pat2 = '2015-05'
 for gender in data["results"]:
 	try:
 		if re.search(pat,gender["updatedAt"]):
-			print(gender["nickname"])
-			print(gender["createdAt"])
-			print(gender["updatedAt"])
-			print("-----------------")
-			gay=gay+1
+			# print(gender["nickname"])
+			# print(gender["createdAt"])
+			# print(gender["updatedAt"])
+			# print("-----------------")
+			active=active+1
 	except:
 		continue
 		# gay = gay+1
-# print("male number",male,"persent:",male/(male+female)*100)
-# print("female number",female,"persent:",female/(male+female)*100)
-print("gay number",gay)
+print("Active number",active)
 
 year_20 = 0.0
 year_20_30=0.0
